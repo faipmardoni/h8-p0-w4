@@ -5,8 +5,6 @@ function angkaPrima(angka) {
         for(var i=2; i<angka; i++) {
             if(angka%i==0) {
                 return false;
-            }else {
-                prime=true;
             }
         }
     }else if(angka==2) {
@@ -14,9 +12,9 @@ function angkaPrima(angka) {
     }else {
         return false;
     }
-    return prime;
+    return true;
   }
-  
+
   // TEST CASES
   console.log(angkaPrima(3)); // true
   console.log(angkaPrima(7)); // true
