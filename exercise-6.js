@@ -6,18 +6,22 @@ function hitungHuruf(kata) {
     for (var i=0; i<arrKata.length; i++) {
         word=arrKata[i];
         var count=0;
-        console.log(i,"-",arrKata)
+        // console.log(i,arrKata)
         for (var j=0; j<arrKata[i].length; j++) {
             var arrSama = word[j];
-            for(var k=0; k<word.length; k++) {
+            // console.log(arrSama)
+            for(var k=j; k<word.length; k++) {
                 if(arrSama===word[k] && k!==j) {
+                    // console.log(arrSama,j,k,count);
                     count++
                 }
             }
         }
+        // console.log(count)
         if(count>patokan){
             patokan=count;
             arrKata=word;
+            // console.log(arrKata,count)
         }
     } 
     if(patokan>0) {
