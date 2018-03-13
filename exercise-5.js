@@ -2,8 +2,8 @@ function ubahHuruf(kata) {
     // you can only write your code here!
     var word = '';
     for (var i=0; i<kata.length; i++) {
-        var hurufToNum=kata[i].charCodeAt(0);
-        hurufToNum=String.fromCharCode(hurufToNum+1)
+        var hurufToNum=kata[i].charCodeAt(0)+95;
+        hurufToNum=String.fromCharCode(hurufToNum+1-95)
         word+=hurufToNum;
     }
     return word
