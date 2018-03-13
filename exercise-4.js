@@ -1,55 +1,45 @@
 function cariModus(arr) {
     // you can only write your code here!
-    arr.sort(function(a,b){return a-b});
-    var modus
     var arrModus = [];
-    var arrIndex = [];
-    var arrA = []
-    var arrB = []
-    // console.log(arr)
-    for (var j=0; j<arr.length; j++) {
-        // console.log(j)
+    for (var i=0; i<arr.length; i++) { //menghitung modus dari setiap angka
         var modus=1;
-        for (var i=j+1; i<arr.length; i++) {
-            // console.log(i)
-            if(arr[j] === arr[i] && arr[j] !== arr[j-1]) {
-                modus++
-                // console.log(arr[i],arr[j],modus)
+        for (var j=i+1; j<arr.length; j++) {
+            if(arr[i] === arr[j] && arr[i] !== arr[i-1]) {
+                modus++;
             }
         }
-        // console.log(modus)
-        arrModus.push(modus)
-        
-    } 
-    // console.log(arrModus)
-    for(i=0; i<arrModus.length; i++) {
-        arrA=[]
-        if(arrModus[i]>1) {
-            // console.log(arrModus);
-            arrA.push(arr[i],arrModus[i])
+        arrModus.push(modus);
+    }
+    var arrB = [];
+    for(var k=0; k<arrModus.length; k++) { //menambahkan angka dan modusnya ke dalam sebuah array
+        var arrA=[];
+        if(arrModus[k]>1) {
+            arrA.push(arr[k],arrModus[k]);
         }else {
-            continue
+            continue;
         }
-        arrB.push(arrA)
+        arrB.push(arrA);
     }
-    console.log(arrB)
-    if(arrB.length===0) {
-        return -1
-    }else if(arrB[0][1]===arr.length) {
-        return -1
-    }else if(arrB.length===1) {
-        return arrB[0][0]
-    }else {
-        for(i=0; i<arrB.length; i++) {
-            if(arrB[i][1]<arrB[i+1][1]){
-                return arrB[i+1][0]
-            }else {
-                return arrB[i][0]
+    if(arrB.length===0) {  //mengecek modus dan angka tidak ada
+        return -1;
+    }else if(arrB[0][1]===arr.length) { //mengecek apakah array isinya sama semua
+        return -1;
+    }else if(arrB.length===1) { //mengecek apakah angka modus hanya 1
+        return arrB[0][0];
+    }else { //mengecek apakah angka modus lebih dari 1
+        for(var a=0; a<arrB.length; a++) { //menentukan modus terbesar
+            for(b=0; b<arrB.length; b++) { //mensortir modus descending
+                for(c=b; c<arrB.length; c++) {
+                    if(arrB[b][1]<arrB[c][1]) {
+                        temp=arrB[b];
+                        arrB[b]=arrB[c];
+                        arrB[c]=temp;
+                    }
+                }
             }
+            return arrB[a][0];
         }
-    }
-    
-    arrIndex.push(arrModus);  
+    } 
     return arrB;
 }
   
