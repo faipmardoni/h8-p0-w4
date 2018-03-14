@@ -4,7 +4,7 @@ function urutkanAbjad(str) {
     for (var i = 0; i < str.length; i++) {
         var hurufToNum = str[i].charCodeAt(0)+95;
         arrB.push(hurufToNum);
-    }
+    } 
     arrB.sort();
     var arrC = ''
     for (var j = 0; j < arrB.length; j++) {
