@@ -82,3 +82,39 @@ console.log(countProfit([{name: 'Windi', product: 'Sepatu Naiki', amount: 5}]));
 // //     leftOver: 1,
 // //     totalProfit: 0 } ]
 console.log(countProfit([])); //[]
+
+
+// PSEUDECODE
+
+// Declare function buatObject with parameter product, shoppers, leftOver, and totalProfit then
+//   Store obj with empty object value
+//   add to obj with key and value product
+//   add to obj with key and value shoppers
+//   add to obj with key and value leftOver
+//   add to obj with key and value totalProfit
+//   return obj value
+// End function
+// Declare function countProfit with parameter shoppers then
+//   store listBarang with array value [ ['Sepatu Stacattu', 1500000, 10],
+//                 ['Baju Zoro', 500000, 2],
+//                 ['Sweater Uniklooh', 175000, 1] ]
+//   store arr with empty array value
+//   if arr.length = 0 then
+//     return arr value
+//   end if
+//   for store i  with 0 and i<listBarang.length do
+//     store jumlah with value 0
+//     store pembeli with empty array value
+//     for store j with 0 and j<shoppers.length do
+//       if listBarang[i][0] is equal to shoppers[j].product and listBarang[i][2]>shoppers[j].amount then
+//         add jumlah by shoppers[j].amount
+//         add pembeli by shoppers[j].name
+//       end if
+//     end for
+//     store profit with result of jumlah * listBarang[i][1]
+//     store sold with result of listBarang[i][2]-jumlah
+//     store obj[i] with value result of function buatObject with value listBarang[i][0], pembeli, sold, and profit
+//     add to arr with value obj[i]
+//   end for
+//   return arr value
+// End function
