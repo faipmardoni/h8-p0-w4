@@ -7,27 +7,27 @@ function countProfit(shoppers) {
   if(shoppers.length===0) {
     return arr;
   }else {
+    function buatObject(product, shoppers, leftOver, totalProfit) {
+      var obj = {};
+      obj.product = product;
+      obj.shoppers = shoppers;
+      obj.leftOver = leftOver;
+      obj.totalProfit = totalProfit;
+      return obj;
+    }
     var obj = {};
     for (let i = 0; i < listBarang.length; i++) {
-      obj[i] = {};
       var jumlah = 0;
-      var profit = 0;
       var pembeli = [];
-      obj[i].product = listBarang[i][0];
-      obj[i].shoppers = pembeli;
-      obj[i].leftOver = listBarang[i][2];
-      obj[i].totalProfit = profit;
       for (let j = 0; j < shoppers.length; j++) {
         if (listBarang[i][0]===shoppers[j].product && listBarang[i][2]>shoppers[j].amount) {
           jumlah+=shoppers[j].amount;
           pembeli.push(shoppers[j].name);
-          sold = listBarang[i][2]-jumlah;
-          profit = jumlah*listBarang[i][1];
-          obj[i].shoppers = pembeli;
-          obj[i].leftOver = sold;
-          obj[i].totalProfit = profit;
         }
       }
+      var profit = jumlah*listBarang[i][1];
+      var sold = listBarang[i][2]-jumlah;
+      obj[i] = buatObject(listBarang[i][0], pembeli, sold, profit);
       arr.push(obj[i]);
     }
   }            
@@ -59,7 +59,7 @@ console.log(countProfit([{name: 'Windi', product: 'Sepatu Stacattu', amount: 8},
 // // [ { product: 'Sepatu Stacattu',
 // //     shoppers: [ 'Windi' ],
 // //     leftOver: 2,
-// //     totalProfit: 12000000 },
+// //     totalProfit: 120000000 },
 // //   { product: 'Baju Zoro',
 // //     shoppers: [ 'Devi', 'Lisa' ],
 // //     leftOver: 0,
