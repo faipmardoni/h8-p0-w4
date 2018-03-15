@@ -49,4 +49,37 @@ console.log(shoppingTime('', 2475000)); //Mohon maaf, toko X hanya berlaku untuk
 console.log(shoppingTime('234JdhweRxa53', 15000)); //Mohon maaf, uang tidak cukup
 console.log(shoppingTime()); ////Mohon maaf, toko X hanya berlaku untuk member saja
 
+
+// PSEUDECODE
+
+// Declare function shoppingTime with parameter memberId and money
+//   store modal with money value
+//   store itemDijual with [['Sepatu Stacattu', 1500000], 
+//                         ['Baju Zoro', 500000], 
+//                         ['Baju H&N', 250000], 
+//                         ['Sweater Uniklooh', 175000], 
+//                         ['Casing Handphone', 50000]];
+//   if memberId is blank or undefined then
+//     return "Mohon maaf, toko X hanya berlaku untuk member saja" value
+//   else if money<50000 or undefined then
+//     return "Mohon maaf, uang tidak cukup" value
+//   else then
+//     store list with empty array value
+//     for store i with 0 and i<itemDijual.length do
+//       if itemDijual[i][1] <= money then
+//         less money by itemDijual[i][1]
+//         add to list with itemDijual[i][0] value
+//       end if
+//     end for
+//     store obj object with key and value
+//       key and value memberId,
+//       key money with value modal,
+//       key listPurchased with value list,
+//       changeMoney with value money
+//     end object
+//   end if
+//   return obj value
+// end function
+
+
  
