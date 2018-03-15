@@ -1,20 +1,20 @@
+function buatObject(product, shoppers, leftOver, totalProfit) {
+  let obj = {};
+  obj.product = product;
+  obj.shoppers = shoppers;
+  obj.leftOver = leftOver;
+  obj.totalProfit = totalProfit;
+  return obj;
+}
 function countProfit(shoppers) {
   let listBarang = [ ['Sepatu Stacattu', 1500000, 10],
                      ['Baju Zoro', 500000, 2],
                      ['Sweater Uniklooh', 175000, 1]
                    ];
-  var arr = [];
+  let arr = [];
   if(shoppers.length===0) {
     return arr;
   }else {
-    function buatObject(product, shoppers, leftOver, totalProfit) {
-      var obj = {};
-      obj.product = product;
-      obj.shoppers = shoppers;
-      obj.leftOver = leftOver;
-      obj.totalProfit = totalProfit;
-      return obj;
-    }
     var obj = {};
     for (let i = 0; i < listBarang.length; i++) {
       var jumlah = 0;
