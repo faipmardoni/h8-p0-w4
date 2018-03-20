@@ -1,16 +1,15 @@
 function tukarBesarKecil(kalimat) {
-    // you can only write your code here!
-    var kalimatBaru = '';
-    for (var i = 0; i < kalimat.length; i++) {
-        if(kalimat[i]===kalimat[i].toUpperCase()) {
-            kalimatBaru += kalimat[i].toLowerCase();
-        }else if(kalimat[i]===kalimat[i].toLowerCase()) {
-            kalimatBaru += kalimat[i].toUpperCase();
+    let str ='';
+    for (let i = 0; i < kalimat.length; i++) {
+        if (kalimat[i] === kalimat[i].toLowerCase()) {
+            str += kalimat[i].toUpperCase();
+        }else if (kalimat[i] === kalimat[i].toUpperCase()) {
+            str += kalimat[i].toLowerCase();
         }else {
-                kalimatBaru += kalimat[i];
+            str += kalimat[i]
         }
     }
-    return kalimatBaru;
+    return str;
   }
   
   // TEST CASES
@@ -19,3 +18,20 @@ function tukarBesarKecil(kalimat) {
   console.log(tukarBesarKecil('My Name is Bond!!')); // "mY nAME IS bOND!!"
   console.log(tukarBesarKecil('IT sHOULD bE me')); // "it Should Be ME"
   console.log(tukarBesarKecil('001-A-3-5TrdYW')); // "001-a-3-5tRDyw"
+
+// PSEUDECODE
+
+// Declare function tukarBesarKecil with parameter kalimat then
+// store str with empty string
+// for store i with 0 and i < kalimat.length do
+// if kalimat[i] === result of kalimat[i].toLowerCase() then
+//     add str with result of kalimat[i].toUpperCase()
+// else if kalimat[i] === result of kalimat[i].toUpperCase() then
+//     add str with result if kalimat[i].toLowerCase()
+// else then
+//     add str with kalimat[i]
+// end if
+// add i by 1
+// end for
+// return str;
+// End function

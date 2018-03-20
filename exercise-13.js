@@ -1,43 +1,34 @@
-function buatObject(product, shoppers, leftOver, totalProfit) {
-  let obj = {};
-  obj.product = product;
-  obj.shoppers = shoppers;
-  obj.leftOver = leftOver;
-  obj.totalProfit = totalProfit;
-  return obj;
-}
 function countProfit(shoppers) {
+  let arr = [];
+  if (shoppers.length === 0) return arr
   let listBarang = [ ['Sepatu Stacattu', 1500000, 10],
                      ['Baju Zoro', 500000, 2],
                      ['Sweater Uniklooh', 175000, 1]
                    ];
-  let arr = [];
-  if(shoppers.length===0) {
-    return arr;
-  }else {
-    var obj = {};
-    for (let i = 0; i < listBarang.length; i++) {
-      var jumlah = 0;
-      var pembeli = [];
-      for (let j = 0; j < shoppers.length; j++) {
-        if (listBarang[i][0]===shoppers[j].product && listBarang[i][2]>shoppers[j].amount) {
-          jumlah+=shoppers[j].amount;
-          pembeli.push(shoppers[j].name);
-        }
+  for (let i = 0; i < listBarang.length; i++) {
+    let obj = {};
+    let buyer = [];
+    let soldOut = 0;
+    let stok = listBarang[i][2];
+    for (let j = 0; j < shoppers.length; j++) {
+      if (listBarang[i][0] === shoppers[j].product && listBarang[i][2] >= shoppers[j].amount) {
+        listBarang[i][2] -= shoppers[j].amount;
+        soldOut += shoppers[j].amount;
+        buyer.push(shoppers[j].name); 
       }
-      var profit = jumlah*listBarang[i][1];
-      var sold = listBarang[i][2]-jumlah;
-      obj[i] = buatObject(listBarang[i][0], pembeli, sold, profit);
-      arr.push(obj[i]);
     }
-  }            
-  return arr;
+    obj.product = listBarang[i][0];
+    obj.shoppers = buyer;
+    obj.leftOver = stok - soldOut;
+    obj.totalProfit = soldOut * listBarang[i][1];
+    arr.push(obj);
+  }
+  return arr
 }
-
 // TEST CASES
 console.log(countProfit([{name: 'Windi', product: 'Sepatu Stacattu', amount: 2}, 
-                         {name: 'Vanessa', product: 'Sepatu Stacattu', amount: 3}, 
-                         {name: 'Rani', product: 'Sweater Uniklooh', amount: 2}]));
+{name: 'Vanessa', product: 'Sepatu Stacattu', amount: 3}, 
+{name: 'Rani', product: 'Sweater Uniklooh', amount: 2}]));
 //[ { product: 'Sepatu Stacattu',
 //   shoppers: [ 'Windi', 'Vanessa' ],
 //   leftOver: 5,
@@ -52,10 +43,10 @@ console.log(countProfit([{name: 'Windi', product: 'Sepatu Stacattu', amount: 2},
 //   totalProfit: 0 } ]
 
 console.log(countProfit([{name: 'Windi', product: 'Sepatu Stacattu', amount: 8}, 
-                         {name: 'Vanessa', product: 'Sepatu Stacattu', amount: 10}, 
-                         {name: 'Rani', product: 'Sweater Uniklooh', amount: 1}, 
-                         {name: 'Devi', product: 'Baju Zoro', amount: 1}, 
-                         {name: 'Lisa', product: 'Baju Zoro', amount: 1}]));
+{name: 'Vanessa', product: 'Sepatu Stacattu', amount: 10}, 
+{name: 'Rani', product: 'Sweater Uniklooh', amount: 1}, 
+{name: 'Devi', product: 'Baju Zoro', amount: 1}, 
+{name: 'Lisa', product: 'Baju Zoro', amount: 1}]));
 // // [ { product: 'Sepatu Stacattu',
 // //     shoppers: [ 'Windi' ],
 // //     leftOver: 2,
@@ -83,38 +74,34 @@ console.log(countProfit([{name: 'Windi', product: 'Sepatu Naiki', amount: 5}]));
 // //     totalProfit: 0 } ]
 console.log(countProfit([])); //[]
 
-
 // PSEUDECODE
 
-// Declare function buatObject with parameter product, shoppers, leftOver, and totalProfit then
-//   Store obj with empty object value
-//   add to obj with key and value product
-//   add to obj with key and value shoppers
-//   add to obj with key and value leftOver
-//   add to obj with key and value totalProfit
-//   return obj value
-// End function
 // Declare function countProfit with parameter shoppers then
-//   store listBarang with array value [ ['Sepatu Stacattu', 1500000, 10],
-//                 ['Baju Zoro', 500000, 2],
-//                 ['Sweater Uniklooh', 175000, 1] ]
-//   store arr with empty array value
-//   if arr.length = 0 then
-//     return arr value
-//   end if
-//   for store i  with 0 and i<listBarang.length do
-//     store jumlah with value 0
-//     store pembeli with empty array value
-//     for store j with 0 and j<shoppers.length do
-//       if listBarang[i][0] is equal to shoppers[j].product and listBarang[i][2]>shoppers[j].amount then
-//         add jumlah by shoppers[j].amount
-//         add pembeli by shoppers[j].name
+//   store arr with empty array
+//   if shoppers.length = 0 then return arr
+//   store listBarang with [ ['Sepatu Stacattu', 1500000, 10],
+//                      ['Baju Zoro', 500000, 2],
+//                      ['Sweater Uniklooh', 175000, 1]
+//                    ]
+//   for store i with 0 and i < listBarang.length do
+//   store stok with listBarang[i][2]
+//   store obj with empty object
+//   store buyer with empty array
+//   store soldOut with 0
+//     for store j with 0 and j < shoppers.length do
+//       if listBarang[i][0] === shoppers[j].product && listBarang[i][2] >= shoppers[j].amount then
+//         less listBarang[i][2] by shoppers[j].amount
+//         add buyer by shoppers[j].name
+//         add soldOut by shoppers[j].amount
 //       end if
+//       add j by 1
 //     end for
-//     store profit with result of jumlah * listBarang[i][1]
-//     store sold with result of listBarang[i][2]-jumlah
-//     store obj[i] with value result of function buatObject with value listBarang[i][0], pembeli, sold, and profit
-//     add to arr with value obj[i]
+//     add obj by key product and value listBarang[i][0]
+//     add obj by key shoppers and value buyer
+//     add obj by key leftOver and value result of stok - soldOut
+//     add obj by key totalProfit and value soldOut * listBarang[i][1]
+//     add arr by obj
+//     add i by 1
 //   end for
-//   return arr value
+//   return arr
 // End function
