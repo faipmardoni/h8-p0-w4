@@ -5,8 +5,8 @@ function hitungHuruf(kata) {
     let mod = 0;
     for (let i in arr) {
         var counter = 0;
-        for (let j = 0; j < arr[i].length; j++) {
-            for (let k = j+1; k < arr[i].length; k++) {
+        for (let j in arr[i]) {
+            for (let k = Number(j)+1; k < arr[i].length; k++) {
                 if (arr[i][j] === arr[i][k]) {
                     counter++;
                     break;
